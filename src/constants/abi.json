@@ -1,0 +1,792 @@
+[
+    {
+        "type": "error",
+        "name": "HealthChain__MedicalRecordNotFound",
+        "inputs": []
+    },
+    {
+        "type": "error",
+        "name": "HealthChain__cantAccessData",
+        "inputs": []
+    },
+    {
+        "type": "error",
+        "name": "HealthChain__notYourData",
+        "inputs": []
+    },
+    {
+        "type": "error",
+        "name": "HealthChain__requestNotApprovedYet",
+        "inputs": []
+    },
+    {
+        "type": "error",
+        "name": "HealthChain__requestNotFound",
+        "inputs": []
+    },
+    {
+        "type": "error",
+        "name": "HealthChain__youAlreadyHaveAnAccount",
+        "inputs": []
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "doctorCreated",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "id",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "name",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "surname",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "doctorUpdated",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "id",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "name",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "surname",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "medicalRecordCreated",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "medicalRecordId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "patientId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "doctorId",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "medicalRecordUpdated",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "medicalRecordId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "patientId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "doctorId",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "patientCreated",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "id",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "name",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "surname",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "patientUpdated",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "id",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "name",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "surname",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "requestApproved",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "requestId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "patientId",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "requestCreated",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "requestId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "patientId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "doctorId",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "requestRejected",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "requestId",
+                "indexed": false
+            },
+            {
+                "type": "address",
+                "name": "patientId",
+                "indexed": false
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "createDoctor",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "string",
+                "name": "name"
+            },
+            {
+                "type": "string",
+                "name": "surname"
+            },
+            {
+                "type": "string",
+                "name": "dateOfBirth"
+            },
+            {
+                "type": "string",
+                "name": "email"
+            },
+            {
+                "type": "string",
+                "name": "telephone"
+            },
+            {
+                "type": "string",
+                "name": "zipCode"
+            },
+            {
+                "type": "string",
+                "name": "city"
+            },
+            {
+                "type": "string",
+                "name": "country"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "createMedicalRecord",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "requestId"
+            },
+            {
+                "type": "address",
+                "name": "patientId"
+            },
+            {
+                "type": "string",
+                "name": "fileName"
+            },
+            {
+                "type": "string",
+                "name": "hospital"
+            },
+            {
+                "type": "string",
+                "name": "details"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "createPatient",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "doctorId"
+            },
+            {
+                "type": "string",
+                "name": "name"
+            },
+            {
+                "type": "string",
+                "name": "surname"
+            },
+            {
+                "type": "string",
+                "name": "dateOfBirth"
+            },
+            {
+                "type": "string",
+                "name": "email"
+            },
+            {
+                "type": "string",
+                "name": "telephone"
+            },
+            {
+                "type": "string",
+                "name": "telephone2"
+            },
+            {
+                "type": "string",
+                "name": "zipCode"
+            },
+            {
+                "type": "string",
+                "name": "city"
+            },
+            {
+                "type": "string",
+                "name": "country"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "createRequest",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientAddress"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "getDoctorData",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "doctorId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "tuple",
+                "components": [
+                    {
+                        "type": "address",
+                        "name": "id"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name"
+                    },
+                    {
+                        "type": "string",
+                        "name": "surname"
+                    },
+                    {
+                        "type": "string",
+                        "name": "dateOfBirth"
+                    },
+                    {
+                        "type": "string",
+                        "name": "email"
+                    },
+                    {
+                        "type": "string",
+                        "name": "telephone"
+                    },
+                    {
+                        "type": "string",
+                        "name": "zipCode"
+                    },
+                    {
+                        "type": "string",
+                        "name": "city"
+                    },
+                    {
+                        "type": "string",
+                        "name": "country"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getMedicalRecordById",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "medicalRecordId"
+            },
+            {
+                "type": "address",
+                "name": "patientId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "tuple",
+                "components": [
+                    {
+                        "type": "uint256",
+                        "name": "id"
+                    },
+                    {
+                        "type": "uint256",
+                        "name": "timeAdded"
+                    },
+                    {
+                        "type": "address",
+                        "name": "patientId"
+                    },
+                    {
+                        "type": "address",
+                        "name": "doctorId"
+                    },
+                    {
+                        "type": "string",
+                        "name": "fileName"
+                    },
+                    {
+                        "type": "string",
+                        "name": "hospital"
+                    },
+                    {
+                        "type": "string",
+                        "name": "details"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getMedicalRecords",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "tuple[]",
+                "components": [
+                    {
+                        "type": "uint256",
+                        "name": "id"
+                    },
+                    {
+                        "type": "uint256",
+                        "name": "timeAdded"
+                    },
+                    {
+                        "type": "address",
+                        "name": "patientId"
+                    },
+                    {
+                        "type": "address",
+                        "name": "doctorId"
+                    },
+                    {
+                        "type": "string",
+                        "name": "fileName"
+                    },
+                    {
+                        "type": "string",
+                        "name": "hospital"
+                    },
+                    {
+                        "type": "string",
+                        "name": "details"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getPatientData",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "tuple",
+                "components": [
+                    {
+                        "type": "address",
+                        "name": "id"
+                    },
+                    {
+                        "type": "address",
+                        "name": "doctorId"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name"
+                    },
+                    {
+                        "type": "string",
+                        "name": "surname"
+                    },
+                    {
+                        "type": "string",
+                        "name": "dateOfBirth"
+                    },
+                    {
+                        "type": "string",
+                        "name": "email"
+                    },
+                    {
+                        "type": "string",
+                        "name": "telephone"
+                    },
+                    {
+                        "type": "string",
+                        "name": "telephone2"
+                    },
+                    {
+                        "type": "string",
+                        "name": "zipCode"
+                    },
+                    {
+                        "type": "string",
+                        "name": "city"
+                    },
+                    {
+                        "type": "string",
+                        "name": "country"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getPatientsDoctorAddress",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "address"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "getRequests",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientId"
+            }
+        ],
+        "outputs": [
+            {
+                "type": "tuple[]",
+                "components": [
+                    {
+                        "type": "uint256",
+                        "name": "requestId"
+                    },
+                    {
+                        "type": "address",
+                        "name": "patientId"
+                    },
+                    {
+                        "type": "address",
+                        "name": "doctorId"
+                    },
+                    {
+                        "type": "uint256",
+                        "name": "timestamp"
+                    },
+                    {
+                        "type": "uint8",
+                        "name": "status"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "respondToRequest",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "requestId"
+            },
+            {
+                "type": "bool",
+                "name": "approved"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "updateDoctor",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "doctorId"
+            },
+            {
+                "type": "string",
+                "name": "name"
+            },
+            {
+                "type": "string",
+                "name": "surname"
+            },
+            {
+                "type": "string",
+                "name": "dateOfBirth"
+            },
+            {
+                "type": "string",
+                "name": "email"
+            },
+            {
+                "type": "string",
+                "name": "telephone"
+            },
+            {
+                "type": "string",
+                "name": "zipCode"
+            },
+            {
+                "type": "string",
+                "name": "city"
+            },
+            {
+                "type": "string",
+                "name": "country"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "updateMedicalRecord",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientId"
+            },
+            {
+                "type": "uint256",
+                "name": "medicalRecordId"
+            },
+            {
+                "type": "uint256",
+                "name": "requestId"
+            },
+            {
+                "type": "string",
+                "name": "fileName"
+            },
+            {
+                "type": "string",
+                "name": "hospital"
+            },
+            {
+                "type": "string",
+                "name": "details"
+            }
+        ],
+        "outputs": []
+    },
+    {
+        "type": "function",
+        "name": "updatePatient",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            {
+                "type": "address",
+                "name": "patientId"
+            },
+            {
+                "type": "address",
+                "name": "doctorId"
+            },
+            {
+                "type": "string",
+                "name": "name"
+            },
+            {
+                "type": "string",
+                "name": "surname"
+            },
+            {
+                "type": "string",
+                "name": "dateOfBirth"
+            },
+            {
+                "type": "string",
+                "name": "email"
+            },
+            {
+                "type": "string",
+                "name": "telephone"
+            },
+            {
+                "type": "string",
+                "name": "telephone2"
+            },
+            {
+                "type": "string",
+                "name": "zipCode"
+            },
+            {
+                "type": "string",
+                "name": "city"
+            },
+            {
+                "type": "string",
+                "name": "country"
+            }
+        ],
+        "outputs": []
+    }
+]
